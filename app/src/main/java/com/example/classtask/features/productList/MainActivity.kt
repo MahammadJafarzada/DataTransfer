@@ -27,12 +27,14 @@ class MainActivity : AppCompatActivity() {
 
     fun openAddProductActivity(){
         val intent = Intent(this,AddProductActivity::class.java)
-        startActivity(intent)
+            //startActivity(intent)
+        newProductLauncher.launch(intent)
     }
 
     private val newProductLauncher=registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result->
         if(result.resultCode== Activity.RESULT_OK){
             val item=result.data?.getParcelableExtra<Product>("product" )
+            println(item)
         }
     }
 
